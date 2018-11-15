@@ -1,10 +1,6 @@
-const Pet = props => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, props.name),
-    React.createElement("h2", {}, props.animal),
-    React.createElement("h2", {}, props.breed)
-  ]);
-};
+import React from "react";
+import { render } from "react-dom";
+import Pet from "./Pet";
 
 class App extends React.Component {
   handleTitleCLick() {
@@ -12,33 +8,17 @@ class App extends React.Component {
   }
 
   render() {
-    return React.createElement("div", {}, [
-      React.createElement(
-        "h1",
-        {
-          onClick: this.handleTitleCLick
-        },
-        "Adopt me now!"
-      ),
-      React.createElement(Pet, {
-        name: "peluche",
-        animal: "dog",
-        breed: "chapi"
-      }),
-      React.createElement(Pet, {
-        name: "coso",
-        animal: "cat",
-        breed: "normal"
-      }),
-      React.createElement(Pet, {
-        name: "piolin",
-        animal: "bird",
-        breed: "asd"
-      })
-    ]);
+    return (
+      <div>
+        <h1>Adopt me Now!!!</h1>
+        <Pet name="Luna" animal="dog" breed="Havanese" />
+        <Pet name="Pepper" animal="bird" breed="Cockatiel" />
+        <Pet name="Doink" animal="cat" breed="Mixed" />
+      </div>
+    );
   }
 }
 
 //   Both are he same
-//   ReactDOM.render(React.createElement(App, {}, null), document.getElementById('root'));
-ReactDOM.render(React.createElement(App), document.getElementById("root"));
+//   render(React.createElement(App, {}, null), document.getElementById('root'));
+render(<App />, document.getElementById("root"));
